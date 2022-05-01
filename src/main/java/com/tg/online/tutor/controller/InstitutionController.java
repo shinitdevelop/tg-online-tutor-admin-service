@@ -16,10 +16,8 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping(value = "/api/institution",consumes = MediaType.APPLICATION_JSON_VALUE)
 public class InstitutionController {
-
     @Autowired
     InstitutionService institutionService;
-
     @ApiOperation(value = "Get Tests ", response = Iterable.class, tags = "getUsersTest")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Success|OK"),
@@ -32,7 +30,7 @@ public class InstitutionController {
     }
 
     @PostMapping(value = "/save",consumes = MediaType.APPLICATION_JSON_VALUE)
-    public  ResponseEntity<?> saveInstitution(@RequestBody InstitutionRequest request){
+    public  ResponseEntity<?> saveInstitution(@RequestParam InstitutionRequest request){
         return institutionService.saveInstitution(request);
     }
 }

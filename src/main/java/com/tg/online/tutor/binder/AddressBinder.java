@@ -10,8 +10,15 @@ import java.time.LocalDateTime;
 public class AddressBinder {
 
     public Address convertInstitutionModelToAddressEntity(InstitutionRequest request){
-
-       return Address.builder().state(request.getState()).city(request.getCity())
+    	
+    	 return Address.builder().state(request.getState()).city(request.getCity())
                 .address(request.getAddress()).pinCode(request.getPinCode()).lastUpdate(LocalDateTime.now()).build();
+
+    }
+
+    public Address convertRequestToAddress(String state, String city,String address,Long pinCode){
+        return Address.builder().state(state).city(city)
+                .address(address).pinCode(pinCode).lastUpdate(LocalDateTime.now()).build();
+
     }
 }

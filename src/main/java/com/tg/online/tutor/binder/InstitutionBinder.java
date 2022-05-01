@@ -15,8 +15,8 @@ public class InstitutionBinder {
 
     public Institution convertRequestToEntity(InstitutionRequest request){
 
-     return    Institution.builder().id(request.getId()).name(request.getName()).contact(request.getContact())
-                .address(addressBinder.convertInstitutionModelToAddressEntity(request)).email(request.getEmail())
+     return    Institution.builder().name(request.getName()).contact(request.getContact())
+                .email(request.getEmail())
                 .logo(request.getLogo()).latitude(request.getLatitude()).longitude(request.getLongitude())
                 .lastUpdate(LocalDateTime.now()).isActive(Boolean.TRUE).build();
 

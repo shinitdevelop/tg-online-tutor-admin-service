@@ -2,9 +2,11 @@ package com.tg.online.tutor.entity;
 
 import lombok.Builder;
 import lombok.Data;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.time.LocalDateTime;
 
 @Data
@@ -39,8 +41,8 @@ public class Institution {
     @Column(name = "LAST_UPDATE")
     private LocalDateTime lastUpdate;
 
-    @Column(name = "IS_ACTIVE")
-    private boolean isActive;
+    @Column(name = "IS_ACTIVE",nullable = false)
+    private Boolean isActive;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "TG_ADDRESS_ID")

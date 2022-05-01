@@ -12,6 +12,7 @@ import java.time.LocalDateTime;
 @Table(name = "TG_ADDRESS")
 public class Address {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
@@ -30,5 +31,7 @@ public class Address {
     @Column(name = "last_update")
     private LocalDateTime lastUpdate;
 
-
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "TG_ENTITY_TYPE_ID")
+    private EntityType entityType;
 }
