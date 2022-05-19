@@ -1,7 +1,8 @@
 package com.tg.online.tutor.controller;
 
-import com.tg.online.tutor.request.InstitutionRequest;
+import com.tg.online.tutor.dto.request.InstitutionRequest;
 import com.tg.online.tutor.service.InstitutionService;
+import com.tg.online.tutor.service.impl.InstitutionServiceImpl;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -29,8 +30,14 @@ public class InstitutionController {
         return ResponseEntity.status(HttpStatus.OK).body("Institution create success");
     }
 
-    @PostMapping(value = "/save",consumes = MediaType.APPLICATION_JSON_VALUE)
-    public  ResponseEntity<?> saveInstitution(@RequestParam InstitutionRequest request){
+    @PostMapping(value = "/save",produces = MediaType.APPLICATION_JSON_VALUE)
+    public  ResponseEntity<?> saveInstitution( InstitutionRequest request){
         return institutionService.saveInstitution(request);
+    }
+
+    @GetMapping
+    public ResponseEntity<?> getInstitution(){
+
+            return institutionService.getInstitution();
     }
 }

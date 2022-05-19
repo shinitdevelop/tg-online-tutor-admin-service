@@ -1,52 +1,17 @@
 package com.tg.online.tutor.service;
 
-import com.tg.online.tutor.binder.AddressBinder;
-import com.tg.online.tutor.binder.InstitutionBinder;
-import com.tg.online.tutor.entity.Address;
-import com.tg.online.tutor.entity.EntityType;
-import com.tg.online.tutor.entity.Institution;
-import com.tg.online.tutor.repository.InstitutionRepository;
-import com.tg.online.tutor.request.InstitutionRequest;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
+import com.tg.online.tutor.dto.request.InstitutionRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-
 @Service
-public class InstitutionService {
+public interface InstitutionService {
 
-    @Autowired
-    InstitutionBinder institutionBinder;
-    @Autowired
-    InstitutionRepository institutionRepository;
+    public ResponseEntity<?> saveInstitution(InstitutionRequest request);
 
-    @Autowired
-    EntityTypeService entityTypeService;
+    public ResponseEntity<?> getInstitution();
 
-    @Autowired
-    AddressBinder addressBinder;
-    public ResponseEntity<?> saveInstitution(InstitutionRequest request){
+    public ResponseEntity<?> deactivateInstitution(Long id);
 
-        //get Entity type
-        Optional<EntityType> entityType =entityTypeService.findEntityTypeByName("INSTITUTION");
 
-        if(entityType.isEmpty()){
-            //throw exception
-        }
-
-        Address address=addressBinder.convertInstitutionModelToAddressEntity(request);
-
-        address.setEntityType(entityType.get());
-
-        Institution ins= institutionBinder.convertRequestToEntity(request);
-
-        ins.setAddress(address);
-
-        ins = institutionRepository.save(ins);
-
-        return new ResponseEntity<>(ins, HttpStatus.OK);
-
-    }
 }

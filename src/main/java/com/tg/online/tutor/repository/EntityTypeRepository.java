@@ -8,6 +8,6 @@ import javax.persistence.Id;
 import java.util.Optional;
 
 @Repository
-public interface EntityTypeRepository extends CrudRepository<EntityType, Id> {
+public interface EntityTypeRepository extends CrudRepository<EntityType, Long> {
     public Optional<EntityType> findEntityTypeByName(String name);
 }

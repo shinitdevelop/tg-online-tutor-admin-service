@@ -1,4 +1,4 @@
-package com.tg.online.tutor.service;
+package com.tg.online.tutor.service.impl;
 
 import com.tg.online.tutor.entity.EntityType;
 import com.tg.online.tutor.repository.EntityTypeRepository;

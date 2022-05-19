@@ -1,9 +1,8 @@
-package com.tg.online.tutor.request;
+package com.tg.online.tutor.dto.request;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NonNull;
+import com.tg.online.tutor.dto.AddressRequest;
+import lombok.*;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.constraints.NotNull;
@@ -11,7 +10,9 @@ import java.math.BigDecimal;
 
 @Data
 @Builder(toBuilder = true)
-public class InstitutionRequest {
+@NoArgsConstructor
+@AllArgsConstructor
+public class InstitutionRequest implements AddressRequest {
 
     private Long id;
 
@@ -35,4 +36,6 @@ public class InstitutionRequest {
     private String address;
     @NotNull
     private Long pinCode;
+
+
 }

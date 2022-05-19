@@ -1,8 +1,13 @@
 package com.tg.online.tutor.entity;
 
+import lombok.Builder;
+import lombok.Data;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
+@Data
+@Builder(toBuilder = true)
 @Entity
 @Table(name = "TG_INSTITUTION_ADMIN")
 public class InstitutionAdmin {
@@ -12,6 +17,12 @@ public class InstitutionAdmin {
 
     @Column(name = "NAME")
     private String name;
+
+    @Column(name = "EMAIL")
+    private String email;
+
+    @Column(name = "CONTACT")
+    private Long contact;
 
     @Column(name = "PIC")
     private String pic;
